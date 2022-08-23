@@ -34,17 +34,24 @@ c = SkyCoord(plik_A[1], plik_A[2],unit=(u.hourangle, u.deg))
 catalog = SkyCoord(plik_C[1], plik_C[2],unit=(u.hourangle, u.deg))
 idxc, idxcatalog, d2d, _ = catalog.search_around_sky(c, 2*u.arcsec)
 
-
 out = open("wynik","w")
-for numer,idc,idcatalog in zip(d2d,idxc,idxcatalog):
-        if numer>0:
-                print(plik_A[0][idc],plik_A[0][idcatalog],idc,idcatalog,numer.to(u.arcsec).value)
-        if idc == idcatalog:
+numerek = 0
+usuniete_C =[]
+for i,linia in enumerate(plik_A[0]):
+        tekst = plik_A[1][i]+" "+plik_A[2][i]+" "+plik_A[0][i]+" "
+        if i in idxc:
+                IDC = plik_C[0][idxcatalog[numerek]]
+                tekst += IDC
+                numerek+=1
+                usuniete_C.append(IDC)
+        print(tekst,file=out)
+for i,linia in enumerate(plik_C[0]):
+        if plik_C[0][i] in usuniete_C:
                 continue
-        print(plik_A[0][idc],plik_C[0][idcatalog],idc,idcatalog,numer.to(u.arcsec).value,file=out)
-#for i,nazwa in enumerate(plik_A[0]):
-        #tekst = plik_A[0][i]
-#print(tekst)
+        tekst = plik_C[1][i]+" "+plik_C[2][i]+" "+"                "+" "+plik_C[0][i]
+        print(tekst,file=out)        
+out.close()
+
 
 
 
