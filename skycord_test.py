@@ -15,6 +15,20 @@ def otw_A(nazwa_pliku):
         plik.close()
         return (lista_id,lista_rek,lista_dek)
 
+def otw_B(nazwa_pliku):
+        plik = open(nazwa_pliku,"r")
+        lista_id=[]
+        lista_rek=[]
+        lista_dek=[]
+        for linia in plik:
+                kolumna = linia.split()
+                #print(kolumna)
+                lista_id.append(kolumna[0])
+                lista_rek.append(kolumna[4])
+                lista_dek.append(kolumna[5])
+        plik.close()
+        return (lista_id,lista_rek,lista_dek)
+
 def otw_C(nazwa_pliku):
         plik = open(nazwa_pliku,"r")
         lista_id=[]
@@ -46,6 +60,7 @@ def otw_Period_A(nazwa_pliku):
         return (lista_id,lista_per1,lista_per2)
 
 plik_A=otw_A("2010AcA....60..179P")
+plik_B=otw_B("2021ApJ...922...30R")
 plik_C=otw_C("2003AA...399L..47M")
 plik_Per=otw_Period_A("2010AcA....60..179P_Period.dat")
 c = SkyCoord(plik_A[1], plik_A[2],unit=(u.hourangle, u.deg))
@@ -63,13 +78,16 @@ for i,linia in enumerate(plik_A[0]):
                 numerek+=1
                 usuniete_C.append(IDC)
         else:
-                tekst+="-"
+                tekst+="-"" "
         print(tekst,file=out)
 for i,linia in enumerate(plik_C[0]):
         if plik_C[0][i] in usuniete_C:
                 continue
         tekst = plik_C[1][i]+" "+plik_C[2][i]+" "+plik_C[3][i]+" "+plik_C[4][i]+" "+"-               "+" "+plik_C[0][i]
-        print(tekst,file=out)        
+        print(tekst,file=out)         
+for i, linia in enumerate(plik_B[0]):
+        tekst=plik_B[1][i]+" "+plik_B[2][i]+" "+"-               "+" -                    "+plik_B[0][i]
+        print(tekst, file=out)       
 out.close()
 
 
