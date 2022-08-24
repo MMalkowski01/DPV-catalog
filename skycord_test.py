@@ -45,7 +45,7 @@ for i,linia in enumerate(plik_A[0]):
                 numerek+=1
                 usuniete_C.append(IDC)
         else:
-                text+="-"
+                tekst+="-"
         print(tekst,file=out)
 for i,linia in enumerate(plik_C[0]):
         if plik_C[0][i] in usuniete_C:
