@@ -38,12 +38,14 @@ out = open("wynik","w")
 numerek = 0
 usuniete_C =[]
 for i,linia in enumerate(plik_A[0]):
-        tekst = plik_A[1][i]+" "+plik_A[2][i]+" "+plik_A[0][i]+" "+"-"
+        tekst = plik_A[1][i]+" "+plik_A[2][i]+" "+plik_A[0][i]+" "
         if i in idxc:
                 IDC = plik_C[0][idxcatalog[numerek]]
                 tekst += IDC
                 numerek+=1
                 usuniete_C.append(IDC)
+        else:
+                text+="-"
         print(tekst,file=out)
 for i,linia in enumerate(plik_C[0]):
         if plik_C[0][i] in usuniete_C:
