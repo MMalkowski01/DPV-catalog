@@ -38,7 +38,7 @@ out = open("wynik","w")
 numerek = 0
 usuniete_C =[]
 for i,linia in enumerate(plik_A[0]):
-        tekst = plik_A[1][i]+" "+plik_A[2][i]+" "+plik_A[0][i]+" "
+        tekst = plik_A[1][i]+" "+plik_A[2][i]+" "+plik_A[0][i]+" "+"-"
         if i in idxc:
                 IDC = plik_C[0][idxcatalog[numerek]]
                 tekst += IDC
