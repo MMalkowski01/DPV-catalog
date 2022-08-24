@@ -50,7 +50,7 @@ for i,linia in enumerate(plik_A[0]):
 for i,linia in enumerate(plik_C[0]):
         if plik_C[0][i] in usuniete_C:
                 continue
-        tekst = plik_C[1][i]+" "+plik_C[2][i]+" "+" -               "+" "+plik_C[0][i]
+        tekst = plik_C[1][i]+" "+plik_C[2][i]+" "+"-               "+" "+plik_C[0][i]
         print(tekst,file=out)        
 out.close()
 
