@@ -29,7 +29,7 @@ def otw_C(nazwa_pliku):
         return (lista_id,lista_rek,lista_dek)
 
 plik_A=otw_A("2010AcA....60..179P")
-plik_C=otw_C("2003A_26A...399L..47M")
+plik_C=otw_C("2003AA...399L..47M")
 c = SkyCoord(plik_A[1], plik_A[2],unit=(u.hourangle, u.deg))
 catalog = SkyCoord(plik_C[1], plik_C[2],unit=(u.hourangle, u.deg))
 idxc, idxcatalog, d2d, _ = catalog.search_around_sky(c, 2*u.arcsec)
