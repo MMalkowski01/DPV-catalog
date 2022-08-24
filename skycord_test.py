@@ -66,10 +66,12 @@ for i,linia in enumerate(plik_C[0]):
         if plik_C[0][i] in usuniete_C:
                 continue
         tekst = plik_C[1][i]+" "+plik_C[2][i]+" "+"-               "+" "+plik_C[0][i]
+
         print(tekst,file=out) 
 for i, linia in enumerate(plik_B[0]):
         tekst=plik_B[1][i]+" "+plik_B[2][i]+" "+"-               "+" -                    "+plik_B[0][i]
         print(tekst, file=out)       
+
 out.close()
 
 
