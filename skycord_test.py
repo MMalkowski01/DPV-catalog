@@ -20,14 +20,18 @@ def otw_B(nazwa_pliku):
         lista_id=[]
         lista_rek=[]
         lista_dek=[]
+        lista_per1=[]
+        lista_per2=[]
         for linia in plik:
                 kolumna = linia.split()
                 #print(kolumna)
                 lista_id.append(kolumna[0])
                 lista_rek.append(kolumna[4])
                 lista_dek.append(kolumna[5])
+                lista_per1.append(kolumna[6])
+                lista_per2.append(kolumna[7])
         plik.close()
-        return (lista_id,lista_rek,lista_dek)
+        return (lista_id,lista_rek,lista_dek,lista_per1,lista_per2)
 
 def otw_C(nazwa_pliku):
         plik = open(nazwa_pliku,"r")
@@ -96,8 +100,8 @@ for i,linia in enumerate(plik_C[0]):
         tekst = plik_C[1][i]+" "+plik_C[2][i]+" "+plik_C[3][i]+" "+plik_C[4][i]+" "+"-               "+" "+plik_C[0][i]
         print(tekst,file=out)         
 for i, linia in enumerate(plik_B[0]):
-        tekst=plik_B[1][i]+" "+plik_B[2][i]+" "+"-               "+" -                    "+plik_B[0][i]
-        print(tekst, file=out)
+        tekst=plik_B[1][i]+" "+plik_B[2][i]+" "+plik_B[3][i]+" "+plik_B[4][i]+" -               "+" -                    "+plik_B[0][i]
+        print(tekst, file=out)       
 out.close()
 
 
