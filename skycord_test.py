@@ -40,6 +40,8 @@ def otw_C(nazwa_pliku):
         lista_dek=[]
         lista_per1=[]
         lista_per2=[]
+        lista_per1_bez_nawiasow=[]
+        lista_per2_bez_nawiasow=[]
         for linia in plik:
                 kolumna = linia.split()
                 lista_id.append(kolumna[0])
@@ -47,8 +49,16 @@ def otw_C(nazwa_pliku):
                 lista_dek.append(kolumna[2])
                 lista_per1.append(kolumna[3])
                 lista_per2.append(kolumna[4])
+        for i in lista_per1:
+                n=i.index("(")
+                lista_per1_bez_nawiasow.append(i[:n])
+        #print(lista_per1_bez_nawiasow)
+        for i in lista_per2:
+                n=i.index("(")
+                lista_per2_bez_nawiasow.append(i[:n])
+        #print(lista_per2_bez_nawiasow)
         plik.close()
-        return (lista_id,lista_rek,lista_dek,lista_per1,lista_per2)
+        return (lista_id,lista_rek,lista_dek,lista_per1_bez_nawiasow[:n],lista_per2_bez_nawiasow[:n])
 
 def otw_Period_A(nazwa_pliku):
         plik = open(nazwa_pliku,"r")
@@ -62,7 +72,7 @@ def otw_Period_A(nazwa_pliku):
                 lista_per2.append(kolumna[7])
         plik.close()
         return (lista_id,lista_per1,lista_per2)
-
+        
 plik_A=otw_A("2010AcA....60..179P")
 plik_B=otw_B("2021ApJ...922...30R")
 plik_C=otw_C("2003AA...399L..47M")
